@@ -13,6 +13,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/', (req, res)=>{
+  res.send("Hello world")
+})
+
 // Routes
 const gameRoutes = require('./routes/games');
 const authRoutes = require('./routes/auth');
