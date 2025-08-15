@@ -10,8 +10,19 @@ const moment = require('moment');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ["https://squadup-three.vercel.app", "http://localhost:3000"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true
+}))
 app.use(express.json());
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
 
 app.use('/health', (req, res)=>{
   res.send("Healthy")
@@ -26,13 +37,6 @@ app.use('/api/auth', authRoutes);
 app.use('/', (req, res)=>{
   res.send("Hello User")
 })
-
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('✅ Connected to MongoDB'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // Cron Job to Delete Expired Games
 const Game = require('./models/Game');
