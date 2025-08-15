@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ["https://squadup-three.vercel.app", "http://localhost:3000"],
+    origin: ["https://squadupp.vercel.app", "http://localhost:3000"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }))
