@@ -17,6 +17,10 @@ app.use('/', (req, res)=>{
   res.send("Hello world")
 })
 
+app.use('/health', (req, res)=>{
+  res.send("Healthy")
+})
+
 // Routes
 const gameRoutes = require('./routes/games');
 const authRoutes = require('./routes/auth');
