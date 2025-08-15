@@ -13,13 +13,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/health', (req, res)=>{
+  res.send("Healthy")
+})
+
 app.use('/', (req, res)=>{
   res.send("Hello User")
 })
 
-app.use('/health', (req, res)=>{
-  res.send("Healthy")
-})
 
 // Routes
 const gameRoutes = require('./routes/games');
