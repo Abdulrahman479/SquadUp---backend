@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/', (req, res)=>{
-  res.send("Hello world")
+  res.send("Hello User")
 })
 
 app.use('/health', (req, res)=>{
