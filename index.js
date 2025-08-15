@@ -17,16 +17,15 @@ app.use('/health', (req, res)=>{
   res.send("Healthy")
 })
 
-app.use('/', (req, res)=>{
-  res.send("Hello User")
-})
-
-
 // Routes
 const gameRoutes = require('./routes/games');
 const authRoutes = require('./routes/auth');
 app.use('/api/games', gameRoutes);
 app.use('/api/auth', authRoutes);
+
+app.use('/', (req, res)=>{
+  res.send("Hello User")
+})
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
